@@ -40,7 +40,7 @@ def build_median_df(df, base_col, year,
                     index=['01-Jan', '02-Feb', '03-Mar', '04-Apr', '05-May', '06-Jun',
                            '07-Jul', '08-Aug', '09-Sep', '10-Oct', '11-Nov', '12-Dec']):
     if 'YY' in df.columns:
-        df = df[df['YY']==year].copy()
+        df = df[(df['YY']==year) | (df['YY']==(year-1900))].copy()
     elif '#YY' in df.columns:
         df = df[df['#YY']==year].copy()
     elif 'YYYY' in df.columns:
