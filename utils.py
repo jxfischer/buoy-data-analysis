@@ -10,11 +10,29 @@ import pandas as pd
 import numpy as np
 import datetime
 #has incomplete data. 999 points are NaN
-def read_file(fname, has_second_header = True):
-    if has_second_header:
-        header= [0,1]
-    else:
-        header = 0
+def read_file(fname):
+    with open(fname, "r") as f:
+        try:
+            line1= f.readline().split()
+        except Exception as e:
+            raise Exception("problem reading first line of file %s"%fname) from e
+        if line1[0] not in ("YY","#YY","YYYY"):
+            raise Exception("bad header line 1 for file %s: '%s'"%(fname,line1))
+        try:
+            line2= f.readline().split()
+        except Exception as e:
+            raise Exception("problem reading second line of file %s"%fname) from e
+        try:
+            int(line2[0])
+            has_second_header= False
+            header= 0
+        except ValueError:
+            if line2[0]in ("#yy","#yr"):
+                has_second_header=True
+                header=[0,1]
+            else:
+                raise Exception("unexpected second header in file %s"%fname)
+ 
     #this gives it a second header
     df= pd.read_csv(fname, sep='\s+', header= header)#allows you to read the file
     if has_second_header:
@@ -52,4 +70,4 @@ def build_median_df(df, base_col, year,
     grouped['month'] = index
     grouped.set_index('month', drop=True, inplace=True)
     return grouped
-  
+
