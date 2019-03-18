@@ -10,5 +10,11 @@
     "name": "intermediate-data",
     "role": "intermediate-data",
     "relative_path": "intermediate-data"
+  },
+  {
+    "resource_type": "git-subdirectory",
+    "name": "results",
+    "role": "results",
+    "relative_path": "results"
   }
 ]
