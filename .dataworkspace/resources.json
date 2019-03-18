@@ -4,5 +4,11 @@
     "name": "code",
     "role": "code",
     "relative_path": "code"
+  },
+  {
+    "resource_type": "git-subdirectory",
+    "name": "intermediate-data",
+    "role": "intermediate-data",
+    "relative_path": "intermediate-data"
   }
 ]
