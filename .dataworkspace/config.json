@@ -1,0 +1,12 @@
+{
+  "name": "buoy-data-analysis",
+  "dws-version": "0.8.4",
+  "global_params": {
+    "results.dir_template": "snapshots/{HOSTNAME}-{TAG}",
+    "results.move_exclude_files": [
+      "README.txt",
+      "README.rst",
+      "README.md"
+    ]
+  }
+}
