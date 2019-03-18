@@ -16,5 +16,11 @@
     "name": "results",
     "role": "results",
     "relative_path": "results"
+  },
+  {
+    "resource_type": "git-subdirectory",
+    "name": "data",
+    "role": "source-data",
+    "relative_path": "data"
   }
 ]
