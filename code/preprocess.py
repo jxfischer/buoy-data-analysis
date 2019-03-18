@@ -30,7 +30,16 @@ def main():
         datadir=buoydir(buoy)
         if not isdir(datadir):
             parser.error("Did not find data directory %s"%datadir)
-    print("Processing data for buoy %d" %args.buoy)
+    for buoy in args.buoy:
+        print("Processing data for buoy %d" %buoy)
+        years= []
+        datadir=buoydir(buoy)
+        for fname in sorted(os.listdir(datadir)):
+            fpath=join(datadir, fname)
+            years.append(read_file(fpath))
+        yeardf=pd.concat(years)
+        yeardf.to_csv(join(OUTDIR,"processed_%d.csv.gz"%buoy), compression="gzip")
+        print ("buoy %d has %d columns and %d rows"%(buoy, len(yeardf.columns), len(yeardf)))
     return 0
 
 
