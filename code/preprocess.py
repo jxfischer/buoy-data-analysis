@@ -13,7 +13,7 @@ import sys
 
 from utils import read_file
 
-BASEDIR=abspath(expanduser(dirname(__file__)))
+BASEDIR=abspath(expanduser(join(dirname(__file__), '..')))
 OUTDIR=join(BASEDIR,"intermediate-data")
 
 def buoydir(buoy):
