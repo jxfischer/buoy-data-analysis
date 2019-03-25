@@ -36,7 +36,7 @@ def main():
         input_dirs.append(datadir)
 
     with LineageBuilder().as_script_step().with_parameters({}).with_input_paths(input_dirs).eval() as lineage:
-        lineage.add_output_path(OUTDIR)
+        #lineage.add_output_path(OUTDIR)
         for buoy in args.buoy:
             print("Processing data for buoy %d" %buoy)
             years= []
@@ -45,7 +45,9 @@ def main():
                 fpath=join(datadir, fname)
                 years.append(read_file(fpath))
             yeardf=pd.concat(years, sort=False)
-            yeardf.to_csv(join(OUTDIR,"processed_%d.csv.gz"%buoy), compression="gzip")
+            outfile = join(OUTDIR,"processed_%d.csv.gz"%buoy)
+            lineage.add_output_path(outfile)
+            yeardf.to_csv(outfile, compression="gzip")
             print ("buoy %d has %d columns and %d rows"%(buoy, len(yeardf.columns), len(yeardf)))
     return 0
 
