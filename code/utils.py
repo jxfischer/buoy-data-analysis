@@ -8,6 +8,7 @@ Created on Sat Jan 26 12:23:55 2019
 """
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 import datetime
 #has incomplete data. 999 points are NaN
 def read_file(fname):
@@ -71,3 +72,39 @@ def build_median_df(df, base_col, year,
     grouped.set_index('month', drop=True, inplace=True)
     return grouped
 
+def load_preprocessed_file(buoyno):
+        filename="../intermediate-data/processed_%s.csv.gz"%buoyno
+        return pd.read_csv(filename,parse_dates=["timestamp"],
+               index_col="timestamp", usecols=["ATMP","WTMP","timestamp"],header=0)
+        
+def get_monthly_averages(df):
+    monthly=df.resample("M").mean()
+    monthly.index = [pd.Period(str(ts)[0:7]) for ts in monthly.index]
+    return monthly
+
+MONTH_NAMES = {1:'Jan', 2:'Feb', 3:'Mar', 4:'Apr', 5:'May', 6:'Jun',
+               7:'Jul', 8:'Aug', 9:'Sep', 10:'Oct', 11:'Nov', 12:'Dec'}
+def monthly_computation(monthly, monthno, field):
+    mask = monthly.index.map(lambda x:x.month)==monthno
+    anomaly = monthly[mask][field] - (monthly[mask][field].mean())
+    anomaly.index = [pd.Period(year=int(str(ym)[0:4]), freq='Y')
+                     for ym in anomaly.index]
+    return anomaly.rename(MONTH_NAMES[monthno])
+
+
+def compute_anomalies(monthly, field):
+    return pd.DataFrame([monthly_computation(monthly, m, field)
+                         for m in range(1, 13)])
+        
+def plot_anomaly_graph(buoyno, temptype, anomalies):
+    yearly_means = anomalies.mean()
+    (slope, intercept) = np.polyfit([i for (i, y) in enumerate(yearly_means.index)], yearly_means, 1)
+    #print("slope is %s" % slope)
+    values = [i*slope+intercept for i in range(len(yearly_means.index))]
+    linear_series = pd.Series(data=values, index=yearly_means.index, name='linear fit')
+    pd.DataFrame({'yearly anomaly':yearly_means, 'least squares fit':linear_series}).plot(figsize=(12,10));
+    plt.title('Yearly mean anomaly %s temperature for buoy %s (slope=%0.2f degrees/decade)' % 
+              (temptype, buoyno, slope*10));
+    plt.ylabel('Degrees C');
+    plt.savefig('../results/%s-%stemp-anomly.pdf' % (buoyno, temptype))
+    return slope*10 # the temp anomaly change per decade in degrees C    
