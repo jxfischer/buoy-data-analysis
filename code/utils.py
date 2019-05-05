@@ -98,13 +98,20 @@ def compute_anomalies(monthly, field):
         
 def plot_anomaly_graph(buoyno, temptype, anomalies):
     yearly_means = anomalies.mean()
-    (slope, intercept) = np.polyfit([i for (i, y) in enumerate(yearly_means.index)], yearly_means, 1)
-    #print("slope is %s" % slope)
-    values = [i*slope+intercept for i in range(len(yearly_means.index))]
-    linear_series = pd.Series(data=values, index=yearly_means.index, name='linear fit')
-    pd.DataFrame({'yearly anomaly':yearly_means, 'least squares fit':linear_series}).plot(figsize=(12,10));
-    plt.title('Yearly mean anomaly %s temperature for buoy %s (slope=%0.2f degrees/decade)' % 
-              (temptype, buoyno, slope*10));
+    try:
+        (slope, intercept) = np.polyfit([i for (i, y) in enumerate(yearly_means.index)], yearly_means, 1)
+    except Exception as e:
+        print("Got error attempting to fit line: %s" % e)
+        pd.DataFrame({'yearly anomaly':yearly_means}).plot(figsize=(12,10));
+        plt.title('Yearly mean anomaly %s temperature for buoy %s (slope unknown)' % 
+                  (temptype, buoyno));
+        slope = np.nan
+    else:
+        values = [i*slope+intercept for i in range(len(yearly_means.index))]
+        linear_series = pd.Series(data=values, index=yearly_means.index, name='linear fit')
+        pd.DataFrame({'yearly anomaly':yearly_means, 'least squares fit':linear_series}).plot(figsize=(12,10));
+        plt.title('Yearly mean anomaly %s temperature for buoy %s (slope=%0.2f degrees/decade)' % 
+                  (temptype, buoyno, slope*10));
     plt.ylabel('Degrees C');
     plt.savefig('../results/%s-%stemp-anomly.pdf' % (buoyno, temptype))
     return slope*10 # the temp anomaly change per decade in degrees C    
