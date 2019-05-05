@@ -1,0 +1,16 @@
+{
+  "hash": "70afc62dbf430d5efd4e9be3f3af0bc99514fa48",
+  "tags": [
+    "buoy-44005-noslope"
+  ],
+  "message": "",
+  "relative_destination_path": "snapshots/mojave-buoy-44005-noslope",
+  "hostname": "mojave",
+  "timestamp": "2019-05-05T09:35:46.178208",
+  "restore_hashes": {
+    "code": "226cbe86cd5c0dac6325b7b943ece314382d860a",
+    "intermediate-data": "226cbe86cd5c0dac6325b7b943ece314382d860a",
+    "results": "1ed066735c82781988db37c77783da37a9d05347",
+    "data": "1ed066735c82781988db37c77783da37a9d05347"
+  }
+}
