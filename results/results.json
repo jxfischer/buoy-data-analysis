@@ -1,0 +1,14 @@
+{
+  "step": "Monthly Analysis",
+  "start_time": "2019-05-05T08:58:59.021869",
+  "execution_time_seconds": null,
+  "parameters": {
+    "buoy": 42040
+  },
+  "run_description": null,
+  "metrics": {
+    "air_slope": 0.279,
+    "water_slope": 0.349,
+    "units": "degrees C per decade"
+  }
+}
