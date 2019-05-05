@@ -1,0 +1,30 @@
+[
+  {
+    "resource_type": "git-subdirectory",
+    "name": "code",
+    "role": "code",
+    "relative_path": "code",
+    "hash": "e3fbce14836ba44116df578a528e4abef0363843"
+  },
+  {
+    "resource_type": "git-subdirectory",
+    "name": "intermediate-data",
+    "role": "intermediate-data",
+    "relative_path": "intermediate-data",
+    "hash": "dbbe5945c0a3d4b79975697d99134b071509d362"
+  },
+  {
+    "resource_type": "git-subdirectory",
+    "name": "results",
+    "role": "results",
+    "relative_path": "results",
+    "hash": "5ec792711a3e6166adab84ad8e4a2aec01427e9c"
+  },
+  {
+    "resource_type": "git-subdirectory",
+    "name": "data",
+    "role": "source-data",
+    "relative_path": "data",
+    "hash": "27f93441d30bd58bcaa9a33ebd6a591df4f175c3"
+  }
+]

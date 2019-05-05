@@ -1,0 +1,104 @@
+{
+  "resource_name": "results",
+  "complete": true,
+  "lineages": [
+    {
+      "type": "step",
+      "step_name": "anomaly-analysis-buoy-44014",
+      "start_time": "2019-05-05T12:08:06.803809",
+      "execution_time_seconds": 0.023564,
+      "parameters": {
+        "buoy": 44014
+      },
+      "input_resources": [
+        {
+          "resource_name": "intermediate-data",
+          "subpath": "processed_44014.csv.gz",
+          "certificate": {
+            "cert_type": "hash",
+            "hashval": "dbbe5945c0a3d4b79975697d99134b071509d362",
+            "comment": "Written by step preprocess at 2019-05-05 12:04:09.669532"
+          }
+        }
+      ],
+      "code_resources": [
+        {
+          "resource_name": "code",
+          "subpath": null,
+          "certificate": {
+            "cert_type": "hash",
+            "hashval": "ee8b5d5f433c8d19f5f942bdd0813d0bb716b580",
+            "comment": "Read by step anomaly-analysis-buoy-44005 at 2019-05-05 10:38:00.798015"
+          }
+        }
+      ],
+      "output_resources": [
+        {
+          "resource_name": "results",
+          "subpath": null,
+          "certificate": {
+            "cert_type": "hash",
+            "hashval": "5ec792711a3e6166adab84ad8e4a2aec01427e9c",
+            "comment": "Written by step anomaly-analysis-buoy-44014 at 2019-05-05 12:08:06.803809"
+          }
+        }
+      ],
+      "command_line": null
+    },
+    {
+      "type": "step",
+      "step_name": "preprocess",
+      "start_time": "2019-05-05T12:04:09.669532",
+      "execution_time_seconds": 31.604707,
+      "parameters": {},
+      "input_resources": [
+        {
+          "resource_name": "data",
+          "subpath": "44014",
+          "certificate": {
+            "cert_type": "hash",
+            "hashval": "27f93441d30bd58bcaa9a33ebd6a591df4f175c3",
+            "comment": "Read by step preprocess at 2019-05-05 12:04:09.669532"
+          }
+        }
+      ],
+      "code_resources": [
+        {
+          "resource_name": "code",
+          "subpath": null,
+          "certificate": {
+            "cert_type": "hash",
+            "hashval": "ee8b5d5f433c8d19f5f942bdd0813d0bb716b580",
+            "comment": "Read by step anomaly-analysis-buoy-44005 at 2019-05-05 10:38:00.798015"
+          }
+        }
+      ],
+      "output_resources": [
+        {
+          "resource_name": "intermediate-data",
+          "subpath": "processed_44014.csv.gz",
+          "certificate": {
+            "cert_type": "hash",
+            "hashval": "dbbe5945c0a3d4b79975697d99134b071509d362",
+            "comment": "Written by step preprocess at 2019-05-05 12:04:09.669532"
+          }
+        }
+      ],
+      "command_line": [
+        "/home/jason/anaconda3/bin/python",
+        "preprocess.py",
+        "44014"
+      ]
+    },
+    {
+      "resource_name": "data",
+      "subpath": "44014",
+      "certificate": {
+        "cert_type": "hash",
+        "hashval": "27f93441d30bd58bcaa9a33ebd6a591df4f175c3",
+        "comment": "Read by step preprocess at 2019-05-05 12:04:09.669532"
+      },
+      "type": "source_data"
+    }
+  ]
+}
