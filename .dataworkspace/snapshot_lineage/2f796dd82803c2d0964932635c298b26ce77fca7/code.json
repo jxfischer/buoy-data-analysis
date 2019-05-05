@@ -1,0 +1,15 @@
+{
+  "resource_name": "code",
+  "lineages": [
+    {
+      "resource_name": "code",
+      "subpath": null,
+      "certificate": {
+        "cert_type": "hash",
+        "hashval": "82a50d7a4ee25abc4eb1119ce5ce074911b24d49",
+        "comment": "Read by step anomaly-analysis-buoy-44014 at 2019-05-05 12:24:03.513180"
+      },
+      "type": "code"
+    }
+  ]
+}
