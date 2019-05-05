@@ -99,19 +99,24 @@ def compute_anomalies(monthly, field):
 def plot_anomaly_graph(buoyno, temptype, anomalies):
     yearly_means = anomalies.mean()
     try:
-        (slope, intercept) = np.polyfit([i for (i, y) in enumerate(yearly_means.index)], yearly_means, 1)
+        #(slope, intercept) = np.polyfit([i for (i, y) in enumerate(yearly_means.index)], yearly_means, 1)
+        import numpy.polynomial.polynomial
+        (slope, intercept) = numpy.polynomial.polynomial.Polynomial.fit([i for (i, y) in enumerate(yearly_means.index)], yearly_means, 1)
+        fit_type = 'least squares fit'
     except Exception as e:
+        # If we cannot infer a straight line, just connect the endpoints
         print("Got error attempting to fit line: %s" % e)
-        pd.DataFrame({'yearly anomaly':yearly_means}).plot(figsize=(12,10));
-        plt.title('Yearly mean anomaly %s temperature for buoy %s (slope unknown)' % 
-                  (temptype, buoyno));
-        slope = np.nan
-    else:
-        values = [i*slope+intercept for i in range(len(yearly_means.index))]
-        linear_series = pd.Series(data=values, index=yearly_means.index, name='linear fit')
-        pd.DataFrame({'yearly anomaly':yearly_means, 'least squares fit':linear_series}).plot(figsize=(12,10));
-        plt.title('Yearly mean anomaly %s temperature for buoy %s (slope=%0.2f degrees/decade)' % 
-                  (temptype, buoyno, slope*10));
+        first_year = yearly_means.index[0]
+        last_year = yearly_means.index[-1]
+        print("Creating a line just using the endpoint years (%s, %s)" %
+              (first_year, last_year))
+        (slope, intercept) = np.polyfit([0, last_year-first_year], [yearly_means[0], yearly_means[-1]], 1)
+        fit_type = 'endpoint fit'
+    values = [i*slope+intercept for i in range(len(yearly_means.index))]
+    linear_series = pd.Series(data=values, index=yearly_means.index, name='linear fit')
+    pd.DataFrame({'yearly anomaly':yearly_means, fit_type:linear_series}).plot(figsize=(12,10));
+    plt.title('Yearly mean anomaly %s temperature for buoy %s (slope=%0.2f degrees/decade)' % 
+              (temptype, buoyno, slope*10));
     plt.ylabel('Degrees C');
     plt.savefig('../results/%s-%stemp-anomly.pdf' % (buoyno, temptype))
     return slope*10 # the temp anomaly change per decade in degrees C    
