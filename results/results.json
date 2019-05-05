@@ -1,0 +1,14 @@
+{
+  "step": "anomaly-analysis-buoy-44005",
+  "start_time": "2019-05-05T10:38:00.798015",
+  "execution_time_seconds": null,
+  "parameters": {
+    "buoy": 44005
+  },
+  "run_description": "compute air and water anomaly for buoy 44005",
+  "metrics": {
+    "air_slope": NaN,
+    "water_slope": NaN,
+    "units": "degrees C per decade"
+  }
+}
