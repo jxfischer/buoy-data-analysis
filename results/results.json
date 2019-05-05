@@ -1,0 +1,14 @@
+{
+  "step": "anomaly-analysis-buoy-42040",
+  "start_time": "2019-05-05T12:20:38.809331",
+  "execution_time_seconds": null,
+  "parameters": {
+    "buoy": 42040
+  },
+  "run_description": "compute air and water anomaly for buoy 42040",
+  "metrics": {
+    "air_slope": 0.121,
+    "water_slope": 0.105,
+    "units": "degrees C per decade"
+  }
+}
