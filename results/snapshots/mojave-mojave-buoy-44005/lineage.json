@@ -1,0 +1,104 @@
+{
+  "resource_name": "results",
+  "complete": true,
+  "lineages": [
+    {
+      "type": "step",
+      "step_name": "anomaly-analysis-buoy-44005",
+      "start_time": "2019-05-05T10:56:45.845676",
+      "execution_time_seconds": 0.017157,
+      "parameters": {
+        "buoy": 44005
+      },
+      "input_resources": [
+        {
+          "resource_name": "intermediate-data",
+          "subpath": "processed_44005.csv.gz",
+          "certificate": {
+            "cert_type": "hash",
+            "hashval": "6732b217cfe9138070f9f9fb6487d1ec8879d921",
+            "comment": "Written by step preprocess at 2019-05-04 19:58:49.997155"
+          }
+        }
+      ],
+      "code_resources": [
+        {
+          "resource_name": "code",
+          "subpath": null,
+          "certificate": {
+            "cert_type": "hash",
+            "hashval": "ee8b5d5f433c8d19f5f942bdd0813d0bb716b580",
+            "comment": "Read by step anomaly-analysis-buoy-44005 at 2019-05-05 10:38:00.798015"
+          }
+        }
+      ],
+      "output_resources": [
+        {
+          "resource_name": "results",
+          "subpath": null,
+          "certificate": {
+            "cert_type": "hash",
+            "hashval": "cde458d9da830a29640a6193994e16fc95aeede9",
+            "comment": "Written by step anomaly-analysis-buoy-44005 at 2019-05-05 10:56:45.845676"
+          }
+        }
+      ],
+      "command_line": null
+    },
+    {
+      "type": "step",
+      "step_name": "preprocess",
+      "start_time": "2019-05-04T19:58:49.997155",
+      "execution_time_seconds": 38.471923,
+      "parameters": {},
+      "input_resources": [
+        {
+          "resource_name": "data",
+          "subpath": "44005",
+          "certificate": {
+            "cert_type": "hash",
+            "hashval": "81c1be4999355a8724a703f07f409329a8a3c823",
+            "comment": "Read by step preprocess at 2019-05-04 19:58:49.997155"
+          }
+        }
+      ],
+      "code_resources": [
+        {
+          "resource_name": "code",
+          "subpath": null,
+          "certificate": {
+            "cert_type": "hash",
+            "hashval": "c298bf0c7c8654241f0088a6ec642fab15e66612",
+            "comment": "Read by step preprocess at 2019-05-04 19:57:42.174827"
+          }
+        }
+      ],
+      "output_resources": [
+        {
+          "resource_name": "intermediate-data",
+          "subpath": "processed_44005.csv.gz",
+          "certificate": {
+            "cert_type": "hash",
+            "hashval": "6732b217cfe9138070f9f9fb6487d1ec8879d921",
+            "comment": "Written by step preprocess at 2019-05-04 19:58:49.997155"
+          }
+        }
+      ],
+      "command_line": [
+        "/home/jason/anaconda3/bin/python",
+        "preprocess.py",
+        "44005"
+      ]
+    },
+    {
+      "resource_name": "data",
+      "subpath": "44005",
+      "certificate": {
+        "cert_type": "hash",
+        "hashval": "81c1be4999355a8724a703f07f409329a8a3c823",
+        "comment": "Read by step preprocess at 2019-05-04 19:58:49.997155"
+      },
+      "type": "source_data"
+    }
+  ]
+}
