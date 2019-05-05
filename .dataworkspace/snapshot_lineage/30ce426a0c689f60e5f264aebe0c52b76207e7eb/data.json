@@ -1,0 +1,45 @@
+{
+  "resource_name": "data",
+  "lineages": [
+    {
+      "resource_name": "data",
+      "subpath": "42040",
+      "certificate": {
+        "cert_type": "hash",
+        "hashval": "81c1be4999355a8724a703f07f409329a8a3c823",
+        "comment": "Read by step preprocess at 2019-05-04 19:57:42.174827"
+      },
+      "type": "source_data"
+    },
+    {
+      "resource_name": "data",
+      "subpath": "44005",
+      "certificate": {
+        "cert_type": "hash",
+        "hashval": "81c1be4999355a8724a703f07f409329a8a3c823",
+        "comment": "Read by step preprocess at 2019-05-04 19:58:49.997155"
+      },
+      "type": "source_data"
+    },
+    {
+      "resource_name": "data",
+      "subpath": "46026",
+      "certificate": {
+        "cert_type": "hash",
+        "hashval": "81c1be4999355a8724a703f07f409329a8a3c823",
+        "comment": "Read by step preprocess at 2019-05-04 19:59:58.438532"
+      },
+      "type": "source_data"
+    },
+    {
+      "resource_name": "data",
+      "subpath": "44014",
+      "certificate": {
+        "cert_type": "hash",
+        "hashval": "27f93441d30bd58bcaa9a33ebd6a591df4f175c3",
+        "comment": "Read by step preprocess at 2019-05-05 12:04:09.669532"
+      },
+      "type": "source_data"
+    }
+  ]
+}
