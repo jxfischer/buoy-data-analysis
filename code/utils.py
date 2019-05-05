@@ -119,4 +119,5 @@ def plot_anomaly_graph(buoyno, temptype, anomalies):
               (temptype, buoyno, slope*10));
     plt.ylabel('Degrees C');
     plt.savefig('../results/%s-%stemp-anomly.pdf' % (buoyno, temptype))
+    plt.savefig('../results/%s-%stemp-anomly.png' % (buoyno, temptype))
     return slope*10 # the temp anomaly change per decade in degrees C    
