@@ -1,0 +1,15 @@
+{
+  "resource_name": "code",
+  "lineages": [
+    {
+      "resource_name": "code",
+      "subpath": null,
+      "certificate": {
+        "cert_type": "hash",
+        "hashval": "c298bf0c7c8654241f0088a6ec642fab15e66612",
+        "comment": "Read by step preprocess at 2019-05-04 19:57:42.174827"
+      },
+      "type": "code"
+    }
+  ]
+}
