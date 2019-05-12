@@ -1,10 +1,10 @@
 {
   "hash": "4526344cfe08c157453205eed862aa484ddc6a0f",
   "tags": [
-    "buody-44005-final"
+    "buoy-44005-final"
   ],
   "message": "",
-  "relative_destination_path": "snapshots/mojave-buody-44005-final",
+  "relative_destination_path": "snapshots/mojave-buoy-44005-final",
   "hostname": "mojave",
   "timestamp": "2019-05-12T11:20:24.855146",
   "restore_hashes": {
