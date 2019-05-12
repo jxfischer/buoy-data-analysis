@@ -100,7 +100,7 @@ def plot_anomaly_graph(buoyno, temptype, anomalies):
     yearly_means = anomalies.mean()
     try:
         import scipy.stats
-        slope, intercept, r_value, p_value, std_err = scipy.stats.linregress([i for (i, y) in enumerate(yearly_means.index)], yearly_means, 1)
+        slope, intercept, r_value, p_value, std_err = scipy.stats.linregress([i for (i, y) in enumerate(yearly_means.index)], yearly_means)
         fit_type = 'least squares fit'
     except Exception as e:
         # If we cannot infer a straight line, just connect the endpoints
