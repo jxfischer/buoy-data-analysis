@@ -1,0 +1,16 @@
+{
+  "hash": "d950d9f024cfcf98bcc641bf826b71abf00f35ae",
+  "tags": [
+    "buoy-42040-final"
+  ],
+  "message": "",
+  "relative_destination_path": "snapshots/mojave-buoy-42040-final",
+  "hostname": "mojave",
+  "timestamp": "2019-05-12T11:15:01.355757",
+  "restore_hashes": {
+    "code": "3a920d6755ba27ac083c997badd20a0a2c39afb8",
+    "intermediate-data": "d4f3ebd2d0bbd170af3886f6c8c5a09dfe897435",
+    "results": "1b4beacaeeddd1ba3972b874a6578102afbbc1b6",
+    "data": "1b4beacaeeddd1ba3972b874a6578102afbbc1b6"
+  }
+}
