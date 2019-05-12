@@ -98,13 +98,12 @@ def compute_anomalies(monthly, field):
         
 def plot_anomaly_graph(buoyno, temptype, anomalies):
     yearly_means = anomalies.mean()
-    try:
-        import scipy.stats
-        slope, intercept, r_value, p_value, std_err = scipy.stats.linregress([i for (i, y) in enumerate(yearly_means.index)], yearly_means)
-        fit_type = 'least squares fit'
-    except Exception as e:
+    import scipy.stats
+    slope, intercept, r_value, p_value, std_err = scipy.stats.linregress([i for (i, y) in enumerate(yearly_means.index)], yearly_means)
+    fit_type = 'least squares fit'
+    if np.isnan(slope):
         # If we cannot infer a straight line, just connect the endpoints
-        print("Got error attempting to fit line: %s" % e)
+        print("Unable to fit a line")
         first_year = yearly_means.index[0]
         last_year = yearly_means.index[-1]
         print("Creating a line just using the endpoint years (%s, %s)" %
