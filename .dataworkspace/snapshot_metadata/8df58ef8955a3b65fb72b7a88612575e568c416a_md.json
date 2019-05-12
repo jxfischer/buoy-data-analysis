@@ -1,0 +1,16 @@
+{
+  "hash": "8df58ef8955a3b65fb72b7a88612575e568c416a",
+  "tags": [
+    "buoy-46026-final"
+  ],
+  "message": "",
+  "relative_destination_path": "snapshots/mojave-buoy-46026-final",
+  "hostname": "mojave",
+  "timestamp": "2019-05-12T11:24:08.638643",
+  "restore_hashes": {
+    "code": "5610d41ee649c423ec56bd05a58f0f17efca3c19",
+    "intermediate-data": "5610d41ee649c423ec56bd05a58f0f17efca3c19",
+    "results": "1332a38bd1cd05e6f5a9243d19f6dca40016e2f9",
+    "data": "1332a38bd1cd05e6f5a9243d19f6dca40016e2f9"
+  }
+}
