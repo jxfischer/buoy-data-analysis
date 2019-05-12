@@ -1,0 +1,16 @@
+{
+  "hash": "4526344cfe08c157453205eed862aa484ddc6a0f",
+  "tags": [
+    "buody-44005-final"
+  ],
+  "message": "",
+  "relative_destination_path": "snapshots/mojave-buody-44005-final",
+  "hostname": "mojave",
+  "timestamp": "2019-05-12T11:20:24.855146",
+  "restore_hashes": {
+    "code": "5c61d26d0e50f3e00aa1f75563e76d34618d067c",
+    "intermediate-data": "5c61d26d0e50f3e00aa1f75563e76d34618d067c",
+    "results": "d9538fd389745565483e09642817060c0b338ad9",
+    "data": "d9538fd389745565483e09642817060c0b338ad9"
+  }
+}
