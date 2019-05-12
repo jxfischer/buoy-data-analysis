@@ -99,9 +99,8 @@ def compute_anomalies(monthly, field):
 def plot_anomaly_graph(buoyno, temptype, anomalies):
     yearly_means = anomalies.mean()
     try:
-        #(slope, intercept) = np.polyfit([i for (i, y) in enumerate(yearly_means.index)], yearly_means, 1)
-        import numpy.polynomial.polynomial
-        (slope, intercept) = numpy.polynomial.polynomial.Polynomial.fit([i for (i, y) in enumerate(yearly_means.index)], yearly_means, 1)
+        import scipy.stats
+        slope, intercept, r_value, p_value, std_err = scipy.stats.linregress([i for (i, y) in enumerate(yearly_means.index)], yearly_means, 1)
         fit_type = 'least squares fit'
     except Exception as e:
         # If we cannot infer a straight line, just connect the endpoints
@@ -115,6 +114,7 @@ def plot_anomaly_graph(buoyno, temptype, anomalies):
     values = [i*slope+intercept for i in range(len(yearly_means.index))]
     linear_series = pd.Series(data=values, index=yearly_means.index, name='linear fit')
     pd.DataFrame({'yearly anomaly':yearly_means, fit_type:linear_series}).plot(figsize=(12,10));
+    plt.scatter(yearly_means.index, yearly_means)
     plt.title('Yearly mean anomaly %s temperature for buoy %s (slope=%0.2f degrees/decade)' % 
               (temptype, buoyno, slope*10));
     plt.ylabel('Degrees C');
